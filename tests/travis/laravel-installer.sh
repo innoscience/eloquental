@@ -39,7 +39,7 @@ if [ -z "$ZIP_INSTALLER" ]; then
 composer create-project laravel/laravel ${INSTALL_DIR} --prefer-dist
 else
 wget ${ZIP_INSTALLER}
-unzip $(basename ${ZIP_INSTALLER})
+unzip -q $(basename ${ZIP_INSTALLER})
 fi
 
 cd ${INSTALL_DIR}
