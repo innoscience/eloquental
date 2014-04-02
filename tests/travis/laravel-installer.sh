@@ -19,7 +19,7 @@ PACKAGIST=innoscience/eloquental:dev-master
 ###################################
 
 BASE_DIR=`pwd`
-BUILD_DIR=${BASE_DIR}/laravel-travis-build
+BUILD_DIR=${BASE_DIR}/laravel-travis
 PACKAGE_DIR=${BUILD_DIR}/vendor/${NAMESPACE}
 
 COMPOSER_PATH=${BUILD_DIR}/composer.json
@@ -27,8 +27,11 @@ PHPUNIT_CONFIG_PATH=${BUILD_DIR}/phpunit.xml
 PHPUNIT_LOADER_PATH=${BUILD_DIR}/tests/bootstrap.php
 
 # download the laravel app
-composer create-project laravel/laravel laravel-travis-build --prefer-dist
-cd laravel-travis-build
+pwd
+composer create-project laravel/laravel laravel-travis --prefer-dist
+cd laravel-travis
 composer require ${PACKAGIST}
 
 cd vendor/${NAMESPACE}
+pwd
+composer install
