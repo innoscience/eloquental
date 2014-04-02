@@ -225,7 +225,8 @@ abstract class Eloquental extends Model
 	protected function clearFlashRules() {
 		if ($this->getFlashRules()) {
 			$this->setFlashRules(array());
-			$this->getValidator()->setRules($this->getRules(), $this->getCustomMessages());
+			$this->getValidator()->setRules($this->getRules());
+			$this->getValidator()->setCustomMessages($this->getCustomMessages());
 		}
 	}
 
