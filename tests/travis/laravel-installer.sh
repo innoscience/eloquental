@@ -7,7 +7,9 @@
 # License: MIT
 #########################################################################
 
-### Put your package composer namespace here, eg: group/package
+##############################################################
+# Put your package composer namespace here, eg: group/package
+##############################################################
 
 NAMESPACE=innoscience/eloquental
 PACKAGIST=innoscience/eloquental:dev-master
