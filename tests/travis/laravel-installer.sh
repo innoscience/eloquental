@@ -36,10 +36,10 @@ PHPUNIT_LOADER_PATH=${BUILD_DIR}/tests/bootstrap.php
 pwd
 
 if [ -z "$ZIP_INSTALLER" ]; then
+composer create-project laravel/laravel ${INSTALL_DIR} --prefer-dist
+else
 wget ${ZIP_INSTALLER}
 unzip $(basename ${ZIP_INSTALLER})
-else
-composer create-project laravel/laravel ${INSTALL_DIR} --prefer-dist
 fi
 
 cd ${INSTALL_DIR}
