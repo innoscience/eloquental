@@ -12,4 +12,4 @@ before_script:
   - ./tests/travis/laravel-installer.sh
   - composer install --dev
 
-script: phpunit -c vendor/innoscience/eloquental/phpunit.xml --coverage-text --debug
+script: phpunit -c laravel-travis/vendor/innoscience/eloquental/phpunit.xml --coverage-text --debug
