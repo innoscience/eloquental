@@ -1,0 +1,29 @@
+{
+    "name": "innoscience/eloquental",
+    "version": "1.0.0",
+    "type": "library",
+    "description": "Its eloquental my dear Watson. A clever model for Laravel's Eloquent ORM with self-validation, ordering, and query control.",
+    "keywords": ["laravel", "orm", "model", "validation"],
+    "homepage": "https://github.com/innoscience/eloquental",
+    "license": "GPLv2",
+    "authors": [
+        {
+            "name": "Brandon Fenning",
+            "email": "brandon@innosience.net",
+            "homepage": "http://www.innoscience.net",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "~4.1",
+        "illuminate/database": "~4.1",
+        "illuminate/validation": "~4.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Innoscience\\Eloquental\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
