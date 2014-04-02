@@ -5,6 +5,8 @@ Inspired by Ardent and Eloquent.
 
 [![Build Status](https://travis-ci.org/innoscience/eloquental.png?branch=master)](https://travis-ci.org/innoscience/comrade-opml)
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/innoscience/eloquental/badges/quality-score.png?s=9fd993af70c414594764232b350f9d153013a095)](https://scrutinizer-ci.com/g/innoscience/eloquental/)
+
 Copyright (C) 2014 Brandon Fenning
 
 ## Obligations
