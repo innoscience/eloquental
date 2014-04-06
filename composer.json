@@ -1,6 +1,6 @@
 {
     "name": "innoscience/eloquental",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "type": "library",
     "description": "Its eloquental my dear Watson. A clever model for Laravel's Eloquent ORM with self-validation, ordering, and query control.",
     "keywords": ["laravel", "orm", "model", "validation"],
