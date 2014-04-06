@@ -75,9 +75,16 @@ Eloquental has a built in ordering property that if set, will automatically invo
 		var $orderBy = array('date' => 'desc');
 	}
 
+### Bring order to order
+
+Add as many ordering clauses as you wish in `$field => $direction` pairs
+
 	User extends Eloquental {
 		...
-		var $orderBy = array('lastname' => 'asc', 'firstname' => 'asc');
+		var $orderBy = array(
+			'lastname' => 'asc',
+			'firstname' => 'asc'
+		);
 	}
 
 > **Fun fact**: If you add an `->orderBy()` clause when querying a model, the model's `->orderBy` property will be ignored when generating the query. This is made possible with a new `Builder` provided by Eloquental that allows the orderBy clause to be added conditionally at the end of the query building process. Later on the documentation will demonstrate how you can add similar custom functionality to your models.
