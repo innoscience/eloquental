@@ -2,8 +2,8 @@
     "name": "innoscience/eloquental",
     "version": "1.0.1",
     "type": "library",
-    "description": "Its eloquental my dear Watson. A clever model for Laravel's Eloquent ORM with self-validation, ordering, and query control.",
-    "keywords": ["laravel", "orm", "model", "validation"],
+    "description": "A rather clever model for Laravel's Eloquent ORM with self-validation, ordering, and query control.",
+    "keywords": ["laravel", "orm", "model", "validation", "eloquent", "database"],
     "homepage": "https://github.com/innoscience/eloquental",
     "license": "GPLv2",
     "authors": [
