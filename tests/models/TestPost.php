@@ -10,7 +10,7 @@ class TestPost extends Eloquental {
 	var $fillable = array('title', 'date', 'content', 'active', 'slug');
 	var $softDelete = TRUE;
 
-	var $orderBy = array('date', 'desc');
+	var $orderBy = array('date' => 'desc');
 
 	var $rules = array(
 		'title'=>'required',
