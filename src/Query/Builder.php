@@ -42,9 +42,13 @@ class Builder extends EloquentBuilder {
 	public function builderOrderBy() {
 
 		if ($this->model->getOrderBy() && !$this->query->orders) {
-			$orderByClauses = $this->model->getOrderBy();
-			for ($clauseCount = 0; $clauseCount <= count($orderByClauses) % 2; $clauseCount=+2) {
-				$this->query->orderBy($orderByClauses[$clauseCount], isset($orderByClauses[$clauseCount+1]) ?$orderByClauses[$clauseCount+1] : 'asc');
+
+			if (array_key_exists(0, $this->model->getOrderBy())) {
+				throw new \Exception(get_class($this->model).'->orderBy property must be an associated array comprised of $field => $direction values');
+			}
+
+			foreach ($this->model->getOrderBy() as $field => $direction) {
+				$this->query->orderBy($field, $direction);
 			}
 		}
 		return $this;
