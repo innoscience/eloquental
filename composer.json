@@ -20,6 +20,9 @@
         "illuminate/database": "~4.1",
         "illuminate/validation": "~4.1"
     },
+    "require-dev": {
+        "satooshi/php-coveralls": "dev-master"
+    },
     "autoload": {
         "psr-4": {
             "Innoscience\\Eloquental\\": "src/"
