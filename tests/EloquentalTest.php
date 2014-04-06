@@ -54,20 +54,28 @@ class EloquentalTest extends PHPUnit_Framework_TestCase {
 
 	function testOrderingOverride() {
 		$post = new TestPost();
-		$posts = $post->setOrderBy(array('title','desc'))->first();
+		$posts = $post->setOrderBy(array('title'=>'desc'))->first();
 		$this->assertEquals('welcome', $posts->slug);
 	}
 
 	function testOrderingOverrideStacked() {
 		$post = new TestPost();
-		$posts = $post->setOrderBy(array('title','asc', 'date', 'desc'))->first();
+		$posts = $post->setOrderBy(array('title'=>'asc', 'date'=>'desc'))->first();
 		$this->assertEquals('incredible-article', $posts->slug);
+	}
+
+	/**
+	 * @expectedException Exception
+	 */
+	function testOrderingExceptionOnOldOrderBy() {
+		$post = new TestPost();
+		$post->setOrderBy(array('title', 'asc'))->get();
 	}
 
 	function testGetInactiveItemsWhenLoggedIn() {
 		\Auth::loginUsingId(1);
 		$post = new TestPost();
-		$posts = $post->setOrderBy(array('title','asc', 'date', 'desc'))->first();
+		$posts = $post->setOrderBy(array('title'=>'asc', 'date'=>'desc'))->first();
 		$this->assertEquals('new-year-update', $posts->slug);
 	}
 
@@ -130,7 +138,6 @@ class EloquentalTest extends PHPUnit_Framework_TestCase {
 		$user->save();
 	}
 
-
 	function testFailedValidation() {
 		$post = new TestPost();
 		$post->title = '';
@@ -172,7 +179,6 @@ class EloquentalTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals(true, $post->validate());
 	}
 
-
 	function testAutoPurge() {
 		$user = new TestUser();
 		$user->name = 'secondary';
@@ -184,8 +190,6 @@ class EloquentalTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals(true ,$result);
 		$this->assertEquals(null ,$user->password_confirmation);
 	}
-
-
 
 	function testRuleAndMessageGettersSetters() {
 		$post = new TestPost;
@@ -208,8 +212,9 @@ class EloquentalTest extends PHPUnit_Framework_TestCase {
 		$post->mergeCustomMessages(array('content.required'=>'Bad content'));
 		$this->assertEquals(3, count($post->getCustomMessages()));
 
-		$post->getObservableEvents();
+		$this->assertEquals(12, count($post->getObservableEvents()));
 	}
+
 	public function testSetValidatorInstance() {
 		$post = new TestPost;
 		$post->setValidator(\Validator::make($post->getAttributes(), $post->getRules()));
