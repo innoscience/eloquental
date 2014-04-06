@@ -33,7 +33,7 @@ Eloquental is namespaced to `Innoscience\Eloquental`, below is a rather elementa
 
 	class News extends Eloquental {
 		var $table = 'news';
-		var $orderBy = array('date', 'desc');
+		var $orderBy = array('date' => 'desc');
 		var $rules = array(
 				'title'=>'required',
 				'slug'=>'required|unique:news,slug',
@@ -66,33 +66,24 @@ Eloquental is namespaced to `Innoscience\Eloquental`, below is a rather elementa
 
 ## The Natural Ordering of Things
 
-Eloquental has a built in ordering variable that if set, will automatically invoke `orderBy()` by default on queries:
-
-	User extends Eloquental {
-		...
-		var $orderBy = array('lastname');
-	}
-
-	News extends Eloquental {
-		...
-		var $orderBy = array('date', 'desc');
-	}
-
-> **Fun fact**: If you add an `->orderBy()` clause when querying a model, the model's `->orderBy` variable will be ignored when generating the query. This is made possible with a new `Builder` provided by Eloquental that allows the orderBy clause to be added conditionally at the end of the query building process. Later on the documentation will demonstrate how you can add similar custom functionality to your models.
-
-### Bringing order to order
-You can add as many order clauses as you wish as field and direction sets of: `$field1`, `$direction1`, `$field2`, `$direction2`, etc:
-
-	Model extends Eloquental {
-		...
-		var $orderBy = array('lastname', 'desc, 'firstname, 'desc');
-	}
+Eloquental has a built in ordering property that if set, will automatically invoke `orderBy()` by default on queries:
 
 > Note: This functionality currently does not work for the $query->lists() method
 
-## Validate This My Good Sir
+	News extends Eloquental {
+		...
+		var $orderBy = array('date' => 'desc');
+	}
 
-> Note: If `$rules` are not set, neither the `->validate()` method nor the `::validating` or `::validated` events will fire for the model.
+	User extends Eloquental {
+		...
+		var $orderBy = array('lastname' => 'asc', 'firstname' => 'asc');
+	}
+
+> **Fun fact**: If you add an `->orderBy()` clause when querying a model, the model's `->orderBy` property will be ignored when generating the query. This is made possible with a new `Builder` provided by Eloquental that allows the orderBy clause to be added conditionally at the end of the query building process. Later on the documentation will demonstrate how you can add similar custom functionality to your models.
+
+
+## Validate This My Good Sir
 
 ### Basics
 
@@ -115,6 +106,8 @@ Eloquental has a built in rules set and the ability to add rules on the fly as r
 	if (!$model->validate()) {
 		return Redirect::back()->withErrors($model->errors());		
 	}
+
+> **Fun Fact**: If `$rules` are not set, neither the `->validate()` method nor the `::validating` or `::validated` events will fire for the model.
 
 ### Validation Events
 
@@ -162,7 +155,7 @@ If a model fails validation, the errors are accessible via the `->errors()` meth
 		echo $model->errors()->all('<li>:message</li>');
 	}
 
-> Note: Setting the `$rules` or `$customMessages` variables when calling `$model->validate($rule = array(), $customMessages = array())` will override the model's default rules and reset the validation instance.
+> Note: Setting the `$rules` or `$customMessages` properties when calling `$model->validate($rule = array(), $customMessages = array())` will override the model's default rules and reset the validation instance.
 
 
 ### Manipulate the Validator instance
@@ -191,14 +184,14 @@ In combination with the validation mechanism, auto-purge allows attributes to be
 
 This will cause the `password_confirmation` attribute to be purged from the attributes of the model before saving. 
 
-> **Fun Fact**: Auto-purged variables are last accessible in the `::validated()` event as they are purged right before the save event fires. If the `$autoPurge` variable is not populated, auto-purge is not applied.
+> **Fun Fact**: Auto-purged properties are last accessible in the `::validated()` event as they are purged right before the save event fires. If the `$autoPurge` property is not populated, auto-purge is not applied.
 
 
 ## A Timely Builder of Queries
 
 The query builder event is a powerful mechanism that allows you to insert query clauses conditionally just before the query builder is executed. The `->orderBy` mechanism in Eloquental is an implementation of this functionality. Other uses include conditionally showing models based on authentication status, etc. It should be used with care.
 
-> **Fun fact**: If an `orderBy()` clause is added during the `buildingQuery` event, this will cause the `$model->orderBy` variable to be ignored.
+> **Fun fact**: If an `->orderBy()` clause is added during the `buildingQuery` event, this will cause the `$model->orderBy` property to be ignored.
 
 The Query Builder event is invoked similarly to model events except passing the query object via the `buildingQuery` static method.
 
