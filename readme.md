@@ -3,7 +3,7 @@ Its eloquental my dear Watson! A rather clever model for Laravel's Eloquent ORM 
 
 Inspired by Ardent and Eloquent.
 
-[![Build Status](https://travis-ci.org/innoscience/eloquental.png?branch=master)](https://travis-ci.org/innoscience/comrade-opml)
+[![Build Status](https://travis-ci.org/innoscience/eloquental.svg?branch=master)](https://travis-ci.org/innoscience/eloquental)
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/innoscience/eloquental/badges/quality-score.png?s=9fd993af70c414594764232b350f9d153013a095)](https://scrutinizer-ci.com/g/innoscience/eloquental/)
 
